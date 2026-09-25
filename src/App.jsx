@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import './App.css'
 
 const CAMPOS = [
@@ -62,13 +62,32 @@ ${corpo}
 </table>`
 }
 
+const CHAVE_STORAGE = 'gerador-lps:linhas'
+
+function carregarLinhas() {
+  try {
+    const salvo = JSON.parse(localStorage.getItem(CHAVE_STORAGE))
+    return Array.isArray(salvo) ? salvo : []
+  } catch {
+    return []
+  }
+}
+
 function App() {
   const [form, setForm] = useState(LINHA_VAZIA)
-  const [linhas, setLinhas] = useState([])
+  const [linhas, setLinhas] = useState(carregarLinhas)
   const [editando, setEditando] = useState(null)
   const [copiado, setCopiado] = useState(false)
 
   const html = useMemo(() => gerarTabela(linhas), [linhas])
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(CHAVE_STORAGE, JSON.stringify(linhas))
+    } catch {
+      // Ignora falhas de armazenamento (modo privado, cota cheia etc.)
+    }
+  }, [linhas])
 
   function alterarCampo(evento) {
     const { name, value } = evento.target
