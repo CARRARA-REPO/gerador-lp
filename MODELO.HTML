@@ -1,0 +1,101 @@
+<style>
+    .tabela-monografias {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: inherit;
+    }
+
+    .tabela-monografias th,
+    .tabela-monografias td {
+        padding: 14px 16px;
+        text-align: left;
+        border-bottom: 1px solid #e5e5e5;
+        word-break: normal;
+    }
+
+    .tabela-monografias tr {
+        transition: background .2s ease;
+    }
+
+    .tabela-monografias tr:hover {
+        background: #f5f7fa;
+    }
+
+    /* MOBILE */
+    @media (max-width:768px) {
+
+        .tabela-monografias thead {
+            display: none;
+        }
+
+        .tabela-monografias,
+        .tabela-monografias tbody,
+        .tabela-monografias tr,
+        .tabela-monografias td {
+            display: block;
+            width: 100%;
+        }
+
+        .tabela-monografias tr {
+            margin-bottom: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .tabela-monografias td {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 12px 14px;
+            border: none;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .tabela-monografias td::before {
+            content: attr(data-label);
+            font-weight: 600;
+            min-width: 110px;
+        }
+
+        .tabela-monografias td:last-child {
+            border-bottom: none;
+        }
+
+    }
+</style>
+
+<table class="tabela-monografias">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Ano</th>
+            <th>Autores</th>
+            <th>Orientador</th>
+            <th>Tipo</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <!-- <tr onclick="window.open('','_blank')" style="cursor:pointer;">
+            <td data-label="Título">
+               //titulo
+            </td>
+            <td data-label="Ano">
+               //ano
+            </td>
+            <td data-label="Autores">
+                //autores
+            </td>
+            <td data-label="Orientador">
+              //orientador
+            </td>
+            <td data-label="Tipo">
+                //Tipo ex:Monografia
+            </td>
+        </tr> -->
+
+
+    </tbody>
+</table>
